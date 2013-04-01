@@ -13,5 +13,14 @@ class Start extends MyScalatraWebAppStack {
       </body>
     </html>
   }
+
+  get("/about") {
+    <html>
+      <body>
+        <h1>github</h1>
+        <a href="https://github.com/marti1125/my-scalatra-web-app">repo example</a>
+      </body>
+    </html>
+  }
   
 }
