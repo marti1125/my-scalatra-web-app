@@ -6,16 +6,24 @@ import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
 object MyScalatraWebAppBuild extends Build {
+
+  import com.github.siasia.PluginKeys.port
+  import com.github.siasia.WebPlugin.{container, webSettings}
+
   val Organization = "eknowit"
   val Name = "My Scalatra Web App"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.0"
   val ScalatraVersion = "2.2.0"
 
+  def Conf = config("container")
+  def jettyPort = 8086
+
   lazy val project = Project (
     "my-scalatra-web-app",
     file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+    settings = Defaults.defaultSettings ++ webSettings ++ Seq(
+      port in Conf := jettyPort,
       organization := Organization,
       name := Name,
       version := Version,
